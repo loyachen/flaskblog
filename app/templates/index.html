@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}LoyaChen's Notes{% endblock %}
+
+{% import "_macros.html" as macros %}
+
+{% block content %}
+    {% for article in articles %}
+        <div id='article-entry' class="entry-box">
+            {% include '_article_info.html' %}
+        </div>
+    {% endfor %}
+    <!-- 分页 -->
+    <div class="pagination", style="text-align:left; padding:0px; margin:0px;">
+        {% if endpoint == '.index' %}
+            {{ macros.pagination_widget(pagination, endpoint) }}
+        {% else %}
+            {{ macros.pagination_widget(pagination, endpoint, id=id) }}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+{% include '_index_sidebar.html' %}
+{% endblock %}

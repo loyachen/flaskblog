@@ -1,0 +1,42 @@
+<div class="article_entry_header">
+    <h3 class="article_entry_title">
+        <a href="{{ url_for('.articleDetails', id=article.id) }}">{{ article.title }}</a>
+    </h3>
+</div>
+
+<div class="row clearfix">
+    <div class="row col-md-12" style="padding-top:10px;">
+        <div class="col-md-3">
+            <p><small><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><span style="color:#8C8C8C;">&nbsp{{ article.create_time }}</span></small></p>
+        </div>
+        <div class="col-md-3">
+            <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>
+            <a href="{{ url_for('main.articleTypes', id=article.articleType.id) }}" target="_blank" style="color: #8C8C8C">
+                {{ article.articleType.name }}
+            </a>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3", style="text-align:right; padding:0px; margin:0px;">
+            <p>Views:&nbsp&nbsp{{ article.num_of_view }}</p>
+        </div>
+    </div>
+</div>
+<div class="article-entry-sum">
+    <p>{{ article.summary }}</p>
+</div>
+
+<div class="row clearfix">
+    <div class="row col-md-12" style="padding-top:10px;">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6", style="text-align:right; padding:0px; margin:0px;">
+            <a href="{{ url_for('.articleDetails', id=article.id) }}" style="float:right">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    了解更多
+                </button>
+            </a>
+        </div>
+    </div>
+</div>

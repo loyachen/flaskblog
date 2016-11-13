@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <title>{% block title %}{% endblock %}</title>
+
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='common.css') }}" rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/floatButton.js') }}"></script>
+    
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon"
+</head>
+
+<body style="background-color:#EEE">
+<header>
+    <nav class="navbar navbar-custom" role="navigation">
+        <div class="container">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class=""><a href="/"><span class="glyphicon glyphicon-home">&nbspLoya's Notes</span></a></li>
+                    {% for menu in Menu.query.order_by(Menu.order.asc()).all() %}
+                        {% if menu.types.count() %}
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ menu.name }}<b                          class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    {% for article_type in menu.types.all() %}
+                                        {% if not article_type.is_hide %}
+                                            <li>
+                                                <a href="{{ url_for('main.articleTypes', id=article_type.id) }}">
+                                                    {{ article_type.name }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% for article_type in ArticleType.query.all() %}
+                        {% if not article_type.menu %}
+                            {% if not article_type.is_hide %}
+                                <li>
+                                    <a href="{{ url_for('main.articleTypes', id=article_type.id) }}">
+                                        {{ article_type.name }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for('main.about') }}">About</a></li>
+                    {% if not current_user.is_authenticated %}
+                        <li><a href="{{ url_for('auth.login') }}">Sigin</a></li>
+                    {% else %}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                {{ current_user.username }} <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url_for('admin.submitArticles') }}">发布文章</a></li>
+                                <li><a href="{{ url_for('admin.account') }}">管理中心</a></li>
+                                <li><a href="{{ url_for('auth.logout') }}">退出登陆</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+{% block Content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 article">
+                <!-- 消息提示区 -->
+                {% for category, message in get_flashed_messages(with_categories=true) %}
+                    <div class="alert alert-{{ category }} alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <!-- 首页正文区域 -->
+                {% block content %}
+                {% endblock %}
+            </div>
+            <div class="col-md-3 blog_nav">
+                {% block sidebar %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<!-- 返回顶部按钮 -->
+<div class="btn-group-vertical floatButton">
+    <button id="goTop" class="btn btn-default" title="返回顶部" type="button">
+        <span class="glyphicon glyphicon-arrow-up"></span>
+    </button>
+</div>
+
+<!-- 页脚 -->
+<div class="footer", style="background:#EEE none repeat scroll 0% 0%;color:#2c3640">
+    <div class="container">
+        <div class="row col-md-12" style="padding-top:10px;">
+            <div class="col-md-3">
+                <p> <small>© 2016 &nbsp ❤ &nbsp Loya.Chen</small></p>
+            </div>
+            <div class="col-md-3">
+                <p> <small>@ Powered &nbsp By &nbsp Nginx&Python</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% block script %}
+{% endblock %}
+
+</body>
+</html>

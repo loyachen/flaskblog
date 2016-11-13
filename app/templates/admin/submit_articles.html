@@ -1,0 +1,46 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}
+    发表博客
+{% endblock %}
+
+{% block stylesheet %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='tinymce/js/tinymce/plugins/codesample/css/prism.css') }}">
+{% endblock %}
+
+{% block script %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='tinymce/js/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='tinymce/js/tinymce/plugins/codesample/plugin.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/tinymce_setup.js') }}"></script>
+{% endblock %}
+
+{% block admin_content %}
+<div class="entry-box submit-article">
+    <h4><strong>发表博客</strong></h4>
+    <hr/>
+    <form class="submit-article" method="post" action="">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            {{ form.title.label(class='control-label') }}：
+            {{ form.title(class='submit-article-title', required='') }}（1-50字）
+        </div>
+        <div class="form-group">
+            {{ form.content() }}
+        </div>
+        <div class="form-group">
+            {{ form.types.label(class='control-label') }}：
+            {{ form.types() }}
+        </div>
+        <div class="form-group">
+            {{ form.summary.label(class='control-label') }}「显示在博客首页」<br>
+            {{ form.summary(class='submit-article-summary form-control', required='') }}
+        </div>
+        <div class="submit-article-button">
+            <button type="submit" class="btn btn-success">发表</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
