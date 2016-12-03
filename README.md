@@ -32,3 +32,17 @@ email='qingkang1993@163.com', username='loya', password='loya'
 
 ![](https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/login.jpg)
 
+首页：
+
+![](https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/博客首页.jpg)
+
+管理后台：
+![](https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/管理后台.jpg)
+
+
+发布文章：
+![](https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/发布文章.jpg)
+
+
+多说评论：
+![](https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/duoshuo.jpg)
