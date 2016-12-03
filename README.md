@@ -1,6 +1,6 @@
 ## Loyachen's Blog Powered By Flask.
 
-这是一个用 Python Flask 框架写的个人博客。基本实现了文章展示，以及一个包含导航分类管理文章发布与管理的后台，同时引用了多说评论。
+这是一个用 Python Flask 框架写的个人博客，前端基于Bootstrap。基本实现了文章展示，以及一个包含导航分类管理文章发布与管理的后台，同时引用了多说评论。
 
 基于 Python 3.5.2 、Mysql 5.6
 
@@ -45,4 +45,4 @@ email='qingkang1993@163.com', username='loya', password='loya'
 
 
 多说评论：
-![](https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/duoshuo.jpg)
+![](https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/多说.jpg)
