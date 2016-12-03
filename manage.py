@@ -32,7 +32,7 @@ def deploy():
     # upgrade database to the latest version
     upgrade()
 
-    User.insert_admin(email='810959120@qq.com', username='loya', password='00')
+    User.insert_admin(email='qingkang1993@163.com', username='loya', password='loya')
     ArticleTypeSetting.insert_system_setting()
     ArticleType.insert_system_articleType()
 
