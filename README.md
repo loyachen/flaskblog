@@ -20,7 +20,7 @@ email='qingkang1993@163.com', username='loya', password='loya'
 
 3.在 config.py 中设置mysql路径
 
-4.python manage deploy
+4.python manage.py deploy
 
 5.python manage.py runserver --host 0.0.0.0
 
