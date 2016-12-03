@@ -30,5 +30,5 @@ email='qingkang1993@163.com', username='loya', password='loya'
 
 登录：
 
-https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/login.jpg
+![](https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/login.jpg)
 
