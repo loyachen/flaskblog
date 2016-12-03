@@ -12,7 +12,7 @@ email='qingkang1993@163.com', username='loya', password='loya'
 
 
 
-git clone后，通过如下步骤启动：
+**git clone后，通过如下步骤启动：**
 
 1.使用 virtualenv 创建虚拟环境
 
@@ -26,5 +26,9 @@ git clone后，通过如下步骤启动：
 
 
 
-示例：
+**示例：**
+
+登录：
+
+https://raw.githubusercontent.com/loyachen/flaskblog/dev/Readme_images/login.jpg
 
